@@ -28,11 +28,11 @@ public class MovieService1 implements IMovieService {
     private static List<Movie> getDefaultList()
     {
         List<Movie> movies = new ArrayList<>();
-        movies.add(new Movie(1, "Cloud Atlas", MovieStyles.SF, 2012));
-        movies.add(new Movie(2, "Shutter Island", MovieStyles.THRILLER, 2010));
-        movies.add(new Movie(3, "Interstellar", MovieStyles.SF, 2018));
-        movies.add(new Movie(4, "Pulp Fiction", MovieStyles.ACTION, 2001));
-        movies.add(new Movie(5, "Mulholland Drive", MovieStyles.THRILLER, 2001));
+        movies.add(new Movie(1, "Cloud Atlas", MovieStyles.SF, 2012, "USA-123456"));
+        movies.add(new Movie(2, "Shutter Island", MovieStyles.THRILLER, 2010, "USA-654321"));
+        movies.add(new Movie(3, "Interstellar", MovieStyles.SF, 2018, "UK-123456"));
+        movies.add(new Movie(4, "Pulp Fiction", MovieStyles.ACTION, 2001, "USA-456321"));
+        movies.add(new Movie(5, "Mulholland Drive", MovieStyles.THRILLER, 2001, "FR-123456"));
         
         return movies;
     }

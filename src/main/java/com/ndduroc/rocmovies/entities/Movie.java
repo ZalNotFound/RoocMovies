@@ -1,25 +1,36 @@
 package com.ndduroc.rocmovies.entities;
 
-// import jakarta.validation.constraints.NotBlank;
-// import jakarta.validation.constraints.NotNull;
-// import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 
 public class Movie {
 
-    public Movie(int idMovie, String title, MovieStyles style, int productionYear) {
+    public Movie(int idMovie, String title, MovieStyles style, int productionYear, String reference) {
         this.idMovie = idMovie;
         this.title = title;
         this.style = style;
         this.productionYear = productionYear;
+        this.reference = reference;
     }
 
+    @NotNull   
     private Integer idMovie;
 
+    @NotBlank
+    @Size(max=100, message="Le titre ne doit pas contenir plus de 100 caractères")
     private String title;
 
+    @NotNull
     private MovieStyles style;
     
+    @NotNull
     private Integer productionYear;
+
+    @NotBlank
+    @Pattern(regexp = "^[A-Z]{2-3}-\\d{6}$", message="Le format de référence doit être 'XX-YYYYYYYY'")
+    private String reference;
 
     public String getTitle() {
         return title;

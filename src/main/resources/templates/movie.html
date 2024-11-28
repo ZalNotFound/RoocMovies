@@ -2,15 +2,16 @@
 <html lang="fr"  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title th:text="${movie.title}"></title>
 </head>
 
 <body>
 
-    <header th:replace="~{fragments/header.html :: header}"/>
+    <h1 th:text="${movie.title}"/>
+    <img th:src="@{/img/{src}(src=${sourceImg})}"/>
+    <p th:text="${movie.style} + ' | ' + ${movie.productionYear}"/>
 
-    <!-- <h3 th:text="'Film: ' + ${movie.title}"/> -->
-
+    <footer th:replace="~{fragments/footer.html :: footer}"/>
 
 </body>
 </html>
