@@ -2,15 +2,16 @@ package com.ndduroc.rocmovies.controllers;
 
 import com.ndduroc.rocmovies.entities.Movie;
 import com.ndduroc.rocmovies.entities.MovieStyles;
-import com.ndduroc.rocmovies.service.MovieService;
+import com.ndduroc.rocmovies.service.IMovieService;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-// import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
+// import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 // import org.springframework.web.bind.annotation.RequestParam;
@@ -25,7 +26,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RequestMapping("movie")
 
 public class MovieController {
-    private MovieService movieService = new MovieService();
+
+    @Autowired
+    // @Qualifier("service2")
+    private IMovieService movieService;
+    
     @GetMapping("/{id}")
     public Optional<Movie> getMovieById(@PathVariable("id") int movieId) {
         return movieService.getMovieById(movieId);
@@ -43,9 +48,9 @@ public class MovieController {
 
     @PostMapping()
     public void addMovie(@RequestBody Movie newMovie) {
-        //TODO: process POST request
+
         movieService.addMovie(newMovie);
-        
+
     }
     
     

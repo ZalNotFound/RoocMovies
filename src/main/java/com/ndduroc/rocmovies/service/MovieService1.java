@@ -4,16 +4,23 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Profile;
+// import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Service;
+
 import com.ndduroc.rocmovies.entities.Movie;
 import com.ndduroc.rocmovies.entities.MovieStyles;
 
 // import jakarta.annotation.PreDestroy;
 
+@Service (value="service1")
+@Profile("!PreProd")
+@Primary
+// @Scope("singleton")
+public class MovieService1 implements IMovieService {
 
-public class MovieService {
-
-
-    /**
+    /** 
      * Fournit une liste de films 'en dur' 
      * en attendant de pouvoir utiliser une base de données 
      * @return
@@ -34,6 +41,7 @@ public class MovieService {
     /** 
      * Liste complète de tous les films
      */
+    @Override
     public List<Movie> getListMovies(){
         if (movieList == null)
         {
@@ -43,17 +51,19 @@ public class MovieService {
     }
 
 
+    @Override
     public Optional<Movie> getMovieById(long id){
         return getListMovies().stream().filter(m -> m.getIdMovie()==id).findFirst();
     }
 
 
-    public MovieService(){
+    public MovieService1(){
         System.out.println("Création du service MovieService");
     }
 
     
 
+    @Override
     public void addMovie(Movie movie) {
 
         getListMovies().add(movie);

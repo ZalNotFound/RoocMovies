@@ -1,0 +1,14 @@
+<div th:fragment="movie-list">
+    <h2>Liste des films</h2>
+    
+    <div th:if="${#lists.isEmpty(movies)}">No movies available</div>
+
+    <ul th:each="movie : ${movies}" class="box-movie">
+        <a th:href="@{/home/movie/{id}(id=${movie.idMovie})}" style="color:black;text-decoration:none">
+            <li>
+                <h3 th:text="${movie.title}"/>
+                <p th:text="${movie.style} + ' | ' + ${movie.productionYear}"/>
+            </li>
+        </a>
+    </ul>
+</div>

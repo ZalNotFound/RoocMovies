@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="fr"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>RocMovies</title>
+</head>
+
+<body>
+
+    <header th:replace="~{fragments/header.html :: header}"/>
+
+    <div th:replace="~{fragments/select.html :: style-select}"/>
+    <div th:replace="~{fragments/list.html :: movie-list}"/>
+
+    <footer th:replace="~{fragments/footer.html :: footer}"/>
+</body>
+</html>
